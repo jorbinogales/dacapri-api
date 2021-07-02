@@ -37,7 +37,7 @@ class ContactController extends Controller
             Contact::create($request->validated());
             $date = $request->all();
 
-            Mail::to('info@dacaprifactory.com')->send(new ContactMail($date));
+            Mail::to('info@dacaprifactory.net')->send(new ContactMail($date));
 
             return response()->json(['success' => 'email success'], 200, ['X-Header-One' => 'Header Value']);
 
