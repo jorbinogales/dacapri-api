@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Requests\ContactRequest;
 use Exception;
 use Mail;
@@ -36,12 +37,13 @@ class ContactController extends Controller
             Contact::create($request->validated());
             $date = $request->all();
 
-            Mail::to('jorbinogales@gmail.com')->send(new ContactMail($date));
+            Mail::to('info@dacaprifactory.com')->send(new ContactMail($date));
 
-            return 'success';
+            return response()->json(['success' => 'email success'], 200, ['X-Header-One' => 'Header Value']);
 
         } catch (Exception $e){
-            return 'error';
+            
+            return $e;
         }
     }
 
