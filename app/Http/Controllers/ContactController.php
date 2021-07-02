@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use Exception;
 use Mail;
+use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
@@ -31,9 +32,9 @@ class ContactController extends Controller
         try {
 
             // redes.dacapri@gmail.com
-            $date = $request->all();
-
+        
             Contact::create($request->validated());
+            $date = $request->all();
 
             Mail::to('jorbinogales@gmail.com')->send(new ContactMail($date));
 
