@@ -35,7 +35,7 @@ class ContactController extends Controller
 
             Contact::create($request->validated());
 
-            // Mail::to('jorbinogales@gmail.com')->send(new ContactMail($date));
+            Mail::to('jorbinogales@gmail.com')->send(new ContactMail($date));
 
             return 'success';
 
