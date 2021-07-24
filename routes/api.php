@@ -24,7 +24,8 @@ Route::middleware('api')->group(function(){
 
 	Route::prefix('contact')->group(function(){
 
-		Route::post('create', [ContactController::class, 'store']);
+		Route::get('', [ContactController::class, 'index']);
+		Route::post('', [ContactController::class, 'store']);
 
 	});
 	

@@ -19,7 +19,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return Contact::all();
     }
 
     /**
@@ -31,14 +31,11 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         try {
-
-            // redes.dacapri@gmail.com
-        
             Contact::create($request->validated());
             $date = $request->all();
 
-            Mail::to('info@dacaprifactory.net')->send(new ContactMail($date));
-
+            Mail::to('redes.dacapri@gmail.com')->send(new ContactMail($date));
+        
             return response()->json(['success' => 'email success'], 200, ['X-Header-One' => 'Header Value']);
 
         } catch (Exception $e){
