@@ -31,7 +31,9 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         try {
+
             Contact::create($request->validated());
+            
             $date = $request->all();
 
             Mail::to('redes.dacapri@gmail.com')->send(new ContactMail($date));
